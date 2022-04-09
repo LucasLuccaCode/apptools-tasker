@@ -1,0 +1,484 @@
+
+/* ======================== MAIN ======================== */
+
+.c-main {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+  background: inherit;
+}
+
+.c-blur {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  z-index: 250;
+}
+
+.c-blur.active {
+  display: flex;
+}
+
+.c-loader {
+  display: flex;
+  width: 5vw;
+  height: 5vw;
+  margin-bottom: 15vh;
+  border: .5vh solid #4a4a55;
+  border-top: .5vh solid #4A81FD;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 3s linear; 
+}
+
+.c-blur.active .c-loader {
+  opacity: 1;
+  animation: loadding 1s linear infinite;
+}
+
+.c-blur h2 {
+  color: #a2a2b0;
+  margin-bottom: 15vh;
+  margin-left: 3vw;
+  font-size: .9rem;
+}
+
+@keyframes loadding {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+  
+[data-main_pages] {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  place-items: center;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.c-main__page {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  place-items: center;
+  scroll-snap-align: center;
+}
+
+/* DETAILS / EXCEPTIONS ...  */
+
+.c-page__card_details {
+  width: 100%;
+  padding: 1vh var(--margin-default);
+  padding-top: 2vh;
+  background: #33333D;
+  z-index: 210;
+  overflow: hidden;
+}
+
+.c-page__details {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background: #3A3A44;
+  box-shadow: 0px 0px 0px 4px var(--details-color);
+  /border: .4vw solid #4A81FD;
+  border-radius: 2vw;
+  overflow: hidden;
+}
+
+.c-page__details.hide {
+  display: none;
+}
+
+.c-page__details li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex: 1;
+  position: relative;
+  padding: 1vh 0;
+  border-radius: 1vw;
+}
+
+.c-page__details .auto_execution {
+  min-width: 40%;
+}
+
+.c-page__details li.active {
+  /background: #efefff;
+  background: var(--details-color);
+}
+
+.c-page__details_stop {
+  max-width: 23vw;
+}
+
+.c-page__details li:nth-child(1) {
+  border-radius: 1vw 0 0 1vw;
+}
+
+.c-page__details li:nth-child(2) {
+  border-radius: 0;
+}
+
+.c-page__details li:nth-child(3) {
+  border-radius: 0 1vw 1vw 0;
+}
+
+.c-page__details li:nth-child(2)::after,
+.c-page__details li:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: .7vw;
+  /background: #4A81FD;
+  background: rgba(0,0,0, .15);
+  opacity: .5;
+}
+
+.c-page__details li:nth-child(2).active::after,
+.c-page__details li:nth-child(2).active::before {
+  display: none;
+}
+
+.c-page__details li:nth-child(2)::after {
+  left: -.5vw;
+}
+
+.c-page__details li:nth-child(2)::before {
+  right: -.5vw;
+}
+
+.c-page__details li div {
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-bottom: .8vh;
+}
+
+.c-page__details div img {
+  width: 3vw;
+  height: 3vw;
+  margin-bottom: .2vh;
+  opacity: .6;
+}
+
+.c-page__details .stop {
+  pointer-events: none;
+  width: 7vw;
+  height: 7vw;
+  opacity: .6;
+}
+
+
+.c-page__details div h2 {
+  margin-left: 1.5vw;
+  color: #afafbf;
+  width: 100%;
+  font-size: .5rem;
+  font-weight: bold;
+}
+
+.c-page__details li.active div img {
+  opacity: .8;
+}
+
+.c-page__details li.active div h2 {
+  color: #dfdfef;
+}
+
+.c-page__details span {
+  pointer-events: none;
+  color: #4A81FD;
+  font-size: .7rem;
+  font-weight: bold;
+}
+
+/* RECENTS */
+
+.c-home__recents {
+  display: flex;
+  width: calc(100% - var(--margin-default) * 2);
+  overflow-x: auto;
+  margin-top: 0.5vh;
+  padding: .5vh 0;
+}
+
+.c-home__recents li {
+  display: flex;
+  align-items: center;
+  background: var(--details-color);
+  /box-shadow: 0px .5px 0px 2px var(--details-color);
+  border-radius: 50vw;
+  max-width: 22vw;
+  min-width: 22vw;
+  width: 22vw;
+  padding: 1vw 1.5vw;
+  margin-left: 2vw;
+  opacity: 1;
+}
+
+.c-home__recents li.active {
+  animation: recents .7s ease alternate infinite;
+}
+
+.c-home__recents li:first-child {
+  margin-left: 0;
+}
+
+.c-home__recents li img {
+  pointer-events: none;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.c-home__recents li img:first-child {
+  height: 5vw;
+  width: 5vw;
+}
+
+.c-home__recents li img:last-child {
+  height: 3vw;
+  width: 3vw;
+  
+}
+
+.c-home__recents li p {
+  pointer-events: none;
+  color: #dfdfef;
+  font-size: .5rem;
+  font-weight: 600;
+  margin: 0 1.5vw;
+  flex: 1;
+  text-align: center;
+}
+
+@keyframes recents {
+  from {
+    opacity: .5;
+  }
+}
+
+/* CONTENT PAGE */
+
+.c-main__page__content {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  margin-top: 1vh;
+  padding: 0 var(--margin-default);
+  padding-bottom: 10vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.c-main__page__content::-webkit-scrollbar {
+  appearance: none;
+  width: .6vw;
+}
+
+
+.c-main__page__content::-webkit-scrollbar-thumb {
+  border-radius: 50vw;
+  background: var(--details-color);
+}
+
+/* HISTORIC */
+
+
+/* CARD DELETE */
+.c-historic__delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 1vw 1vw 0 0;
+  background: var(--secondary-color);
+  padding: 1vh 0;
+  z-index: 200;
+  box-shadow: 0px 2px 0px 1px rgba(0,0,0, .02);
+}
+
+.c-historic__delete:active {
+  background: rgba(0,0,0, .1);
+}
+
+.c-historic__delete img {
+  pointer-events: none;
+  width: 5vw;
+  height: 5vw;
+}
+
+.c-historic__delete p {
+  pointer-events: none;
+  font-size: .8rem;
+  font-weight: 600;
+  color: #efefff;
+  margin-left: 2vw;
+}
+
+/* CARDS HISTORIC */
+
+.c-historic__card {
+  pointer-events: none
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: .3vw;
+  padding: 2vh 0;
+  /margin-top: 1.5vh;
+  border-left: 1vw solid var(--secondary-color);
+}
+
+.c-historic__card::before {
+  content: "";
+  position: absolute;
+  left: calc( var(--margin-default) - 1.5vw);
+  width: 4vw;
+  height: 4vw;
+  border-radius: 50%;
+  z-index: 1001;
+  background: var(--secondary-color);
+}
+
+.c-historic__card::after {
+  content: "";
+  position: absolute;
+  width: 1.5vw;
+  height: 1.5vw;
+  left: calc( var(--margin-default) - .3vw);
+  border-radius: 50%;
+  z-index: 1002;
+}
+
+.c-historic__card:last-child:: {
+  /border: none;
+}
+
+.c-historic__card.sucess::after {
+  background: rgba(0, 255, 255, .6);
+  box-shadow: 0px 0px 2px 2px rgba(0, 255, 255, .6);
+}
+
+.c-historic__card.error::after {
+  background: rgba(255, 95, 145, .6);
+  box-shadow: 0px 0px 2px 2px rgba(255, 95, 145, .6);
+}
+
+.c-historic__card p {
+  color: rgba(239, 239, 255, .8);
+  font-weight: 400;
+  font-size: .6rem;
+  width: 100%;
+  margin-left: 3vw;
+}
+
+.c-historic__card span {
+  color: #4a4a55;
+  font-weight: bold;
+  font-size: .5rem;
+  background: #efefff;
+  padding: 1.3vw 1.6vw;
+  margin: 0 .5vw;
+  font-weight: bold;
+  border-radius: 50vw;
+}
+
+/* CARDS */
+
+.c-page__card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1.5vh 0;
+  border-bottom: var(--size-lines-spacing) solid rgba(0,0,0, .06);
+}
+
+.c-page__cover {
+  height: 8.5vw;
+  width: 8.5vw;
+  border-radius: 50%;
+}
+
+.c-page__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0 2vw;
+  overflow: hidden;
+}
+
+.c-page__content h2 {
+  pointer-events: none;
+  color: var(--text-color);
+  font-size: .7rem;
+}
+
+.c-page__content p {
+  color: #727286;
+  font-weight: 400;
+  font-size: .6rem;
+  margin-top: 1vh;
+}
+
+/* ======================= CheckBox ======================= */
+
+.checkbox {
+  appearance: none;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 5.5vw;
+  height: 5.5vw;
+  border-radius: 50vw;
+  border: 0.4vw solid #FC608F;
+}
+
+.checkbox:checked {
+  border: 0.4vw solid #4A81FD;
+}
+
+.checkbox::before {
+  content: "";
+  display: inline-block;
+  width: 60%;
+  height: 15%;
+  border-radius: 50vw;
+  background: #FC608F;
+}
+
+.checkbox:checked::before {
+  width: 1.2vw;
+  height: 1.7vw;
+  background: none;
+  border-right: 0.6vw solid #4A81FD;
+  border-bottom: 0.6vw solid #4A81FD;
+  transform: rotate(45deg);
+  margin-bottom: 12%;
+  border-radius: 0;
+}
+
+.checked-js {
+  background: none;
+}

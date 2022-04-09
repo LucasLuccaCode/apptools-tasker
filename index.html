@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="%path/css/index.css">
+  <link rel="stylesheet" href="%path/css/header.css">
+  <link rel="stylesheet" href="%path/css/main.css">
+  <link rel="stylesheet" href="%path/css/home.css">
+  <link rel="stylesheet" href="%path/css/settings.css">
+  <link rel="stylesheet" href="%path/css/footer.css">
+  <script src="%path/js/updates.js" defer></script>
+  <script src="%path/js/thread.js" defer></script>
+  <script src="%path/js/formatting.js" defer></script>
+  <script src="%path/js/selectorsAndEvents.js" defer></script>
+  <script src="%path/js/callbacks.js" defer></script>
+  <script src="%path/js/ultilities.js" defer></script>
+  <script src="%path/js/createHtmlTags.js" defer></script>
+  <script src="%path/js/data.js" defer></script>
+  <script src="%path/js/appTools.js" defer></script>
+  <title> App Tools</title>
+</head>
+<body>
+
+  <section class="c-order" data-order>
+    <div class="c-order__content">
+      <h2>Ordenar</h2>
+      <ul>
+        <li data-oder_card="alphabetic">
+          <p>
+            Nome [ A - Z ]
+          </p>
+        </li>
+        <li data-oder_card="reverseAlphabetic">
+          <p>
+            Nome [ Z - A ]
+          </p>
+        </li>
+      </ul>
+      <div class="c-order__loader"></div>
+    </div>
+  </section>
+
+  <!--===== HEADER ===== -->
+
+  <header class="c-header">
+    <div class="c-header__c_title c--flex">
+      <h1 data-title> App Tools</h1>
+    </div>
+    <form class="c-header__c_search" data-header_form accept-charset="utf-8">
+      <div data-search_back class="hide c--flex">
+        <img src="%path/src/tools/search_back.png" alt="Voltar" />
+      </div>
+      <input data-header_search type="search" />
+      <button class="c--flex">
+        <img src="%path/src/tools/search.png" alt="Buscar" />
+      </button>
+    </form>
+
+    <nav class="c-header__shortcuts">
+      <ul data-header_shortcuts>
+        <li data-header_shortcut="home" class="c--flex">
+          <p>
+            HOME
+          </p>
+        </li>
+        <li data-header_shortcut="kill" class="c--flex">
+          <p>
+            ENCERRAR APPS
+          </p>
+        </li>
+        <li data-header_shortcut="clean" class="c--flex">
+          <p>
+            LIMPAR CACHES
+          </p>
+        </li>
+        <li data-header_shortcut="uninstall" class="c--flex">
+          <p>
+            DESINSTALAR APPS
+          </p>
+        </li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <!--===== MAIN ===== -->
+
+  <main class="c-main">
+    <section class="c-blur active" data-blur>
+      <div class="c-loader"></div>
+      <h2>Carregando...</h2>
+    </section>
+    <ul class="c-msg"></ul>
+    <ul data-main_pages>
+
+      <li data-page="home" class="c-main__page c-home">
+        <section class="c-page__card_details" data-home_card_details>
+          <ul class="c-page__details" data-home_details>
+            <li data-home_card_total class="active">
+              <div>
+                <img src="%path/src/tools/details_apps.png" alt="apps" />
+                <h2>APLICATIVOS</h2>
+              </div>
+              <span data-home_total>...</span>
+            </li>
+            <li data-home_card_historic>
+              <div>
+                <img src="%path/src/tools/details_historic.png" alt="historic" />
+                <h2>HISTÓRICO</h2>
+              </div>
+              <span data-home_historic>...</span>
+            </li>
+            <li data-home_card_execution class="auto_execution">
+              <div>
+                <img src="%path/src/tools/details_time.png" alt="hora" />
+                <h2>EXECUÇÃO AUTOMÁTICA</h2>
+              </div>
+              <span data-home_hour>...</span>
+            </li>
+          </ul>
+        </section>
+
+        <ul class="c-home__recents" data-home_recents></ul>
+
+        <section data-page_content="home" class="c-main__page__content">
+        </section>
+      </li>
+
+      <li data-page="kill" class="c-main__page c-kill">
+        <section class="c-page__card_details" data-kill_card_details>
+          <ul class="c-page__details" data-kill_details>
+            <li data-kill_card_total class="active">
+              <div>
+                <img src="%path/src/tools/details_apps.png" alt="apps" />
+                <h2>TOTAL</h2>
+              </div>
+              <span data-kill_total>...</span>
+            </li>
+            <li data-kill_card_selecteds>
+              <div>
+                <img src="%path/src/tools/details_selecteds.png" alt="selecteds" />
+                <h2>SELECIONADOS</h2>
+              </div>
+              <span data-kill_selecteds>..</span>
+            </li>
+            <li data-kill_card_exceptions>
+              <div>
+                <img src="%path/src/tools/details_exceptions.png" alt="exceptions" />
+                <h2>EXCEÇÕES</h2>
+              </div>
+              <span data-kill_exceptions>...</span>
+            </li>
+          </ul>
+        </section>
+
+        <section data-page_content="kill" class="c-main__page__content">
+        </section>
+      </li>
+
+      <li data-page="clean" class="c-main__page c-clean">
+        <section class="c-page__card_details" data-clean_card_details>
+          <ul class="c-page__details" data-clean_details>
+            <li data-clean_card_total class="active">
+              <div>
+                <img src="%path/src/tools/details_apps.png" alt="apps" />
+                <h2>TOTAL</h2>
+              </div>
+              <span data-clean_total>...</span>
+            </li>
+            <li data-clean_card_selecteds>
+              <div>
+                <img src="%path/src/tools/details_selecteds.png" alt="selecteds" />
+                <h2>SELECIONADOS</h2>
+              </div>
+              <span data-clean_selecteds>...</span>
+            </li>
+            <li data-clean_card_exceptions>
+              <div>
+                <img src="%path/src/tools/details_exceptions.png" alt="exceptions" />
+                <h2>EXCEÇÕES</h2>
+              </div>
+              <span data-clean_exceptions>...</span>
+            </li>
+          </ul>
+        </section>
+
+        <section data-page_content="clean" class="c-main__page__content">
+        </section>
+      </li>
+
+      <li data-page="uninstall" class="c-main__page c-uninstall">
+        <section class="c-page__card_details" data-uninstall_card_details>
+          <ul class="c-page__details" data-uninstall_details>
+            <li data-uninstall_card_total class="active">
+              <div>
+                <img src="%path/src/tools/details_apps.png" alt="apps" />
+                <h2>TOTAL</h2>
+              </div>
+              <span data-uninstall_total>...</span>
+            </li>
+            <li data-uninstall_card_selecteds>
+              <div>
+                <img src="%path/src/tools/details_selecteds.png" alt="selecteds" />
+                <h2>SELECIONADOS</h2>
+              </div>
+              <span data-uninstall_selecteds>...</span>
+            </li>
+            <li data-uninstall_card_exceptions>
+              <div>
+                <img src="%path/src/tools/details_exceptions.png" alt="exceptions" />
+                <h2>EXCEÇÕES</h2>
+              </div>
+              <span data-uninstall_exceptions>...</span>
+            </li>
+          </ul>
+        </section>
+
+        <section data-page_content="uninstall" class="c-main__page__content">
+        </section>
+      </li>
+
+      <li data-page="settings" class="c-main__page c-settings">
+        <ul class="c-settings__content">
+          <li>
+            <h3 class="nowrap"> Tema escuro </h3>
+            <input class="alternator" data-settings_check="themeDark" type="checkbox" />
+          </li>
+          <li>
+            <h3 class="nowrap"> Vibrar ao tocar </h3>
+            <input class="alternator" data-settings_check="vibration" type="checkbox" />
+          </li>
+          <li>
+            <h3 class="nowrap"> Mostrar barra de ações recentes </h3>
+            <input class="alternator" data-settings_check="recents" type="checkbox" />
+          </li>
+          <li>
+            <h3 class="nowrap"> Incluir aplicativos do sistema  </h3>
+            <input class="alternator" data-settings_check="addSystemApps" type="checkbox" />
+          </li>
+          <li>
+            <h3 class="nowrap"> Linhas de espaçamento </h3>
+            <input class="alternator" data-settings_check="activeLines" type="checkbox" />
+          </li>
+          <li>
+            <h3 class="nowrap"> Atualizar lista de aplicativos automaticamente </h3>
+            <input class="alternator" data-settings_check="updateAppsAutomatically" type="checkbox" />
+          </li>
+          <li>
+            <h3 class="nowrap"> Resetar configurações </h3>
+            <input class="alternator" data-settings_check="reset" type="checkbox" />
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </main>
+
+  <!--===== FOOTER ===== -->
+
+  <footer class="c-footer" data-footer>
+    <ul>
+      <li data-footer_card="search" class="c--flex">
+        <img src="%path/src/tools/search.png" />
+      </li>
+      <li data-footer_card="update" class="c--flex">
+        <img src="%path/src/tools/footer_update.png" />
+      </li>
+      <li data-footer_card="start" class="c--flex">
+        <img src="%path/src/tools/footer_start.png" />
+      </li>
+      <li data-footer_card="order" class="c--flex">
+        <img src="%path/src/tools/footer_order.png" />
+      </li>
+      <li data-footer_card="settings" class="c--flex">
+        <img src="%path/src/tools/footer_settings.png" />
+      </li>
+    </ul>
+  </footer>
+
+  <script>
+
+    const tasker = {
+      qtd_apps: %qtd_apps,
+      path: `%path`,
+
+      setLocalVar(name, value) {
+        setLocal(name, value);
+      },
+      getLocal(variable) {
+        return local(variable)
+      },
+      async runTask(task, key, value) {
+        performTask(task, 1, key, value);
+      },
+      checkRunningTask(task) {
+        const re = new RegExp(task);
+        return re.test(global('TRUN'))
+      },
+      async actionsShell(code) {
+        const output = await shell(`${code}`, false);
+        return output;
+      },
+      toggleProfile(name, status) {
+        enableProfile(name, status)
+      },
+
+    }
+
+  </script>
+
+</body>
+</html>

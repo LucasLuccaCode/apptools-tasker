@@ -1,0 +1,88 @@
+
+/* ========= FOOTER  ========= */
+
+.c-footer {
+  position: fixed;
+  left: 50%;
+  bottom: 2vh;
+  transform: translateX(-50%);
+  width: 65vw;
+  height: 7vh;
+  border-radius: 50vw;
+  background: var(--details-color);
+  box-shadow: 0 .3vh .3vh .3vh rgba(0,0,0, .12);
+  z-index: 220;
+}
+
+.c-footer.hide {
+  display: none;
+}
+
+.c-footer ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.c-footer ul li {
+  position: relative;
+  height: 100%;
+  flex: 1;
+}
+
+.c-footer ul li:active {
+  background: #5962dF;
+}
+
+.c-footer ul img {
+  pointer-events: none;
+  width: 6vw;
+  height: 6vw;
+}
+
+.c-footer ul li:nth-child(3) {
+  background: #4A81FD;
+  border-radius: 50%;
+  margin: 0 2vw;
+  flex: none;
+  width: 8.3vw;
+  height: 8vw;
+  box-shadow: 0px .3vh 0 #3A71eD,
+              0px -.2vh 0 #5A91Ff;
+  transition: transform .1s linear;
+}
+
+.c-footer ul li:nth-child(3).disabled {
+  opacity: .5;
+}
+
+.c-footer ul li:nth-child(3).running {
+  background: var(--text-color);
+  box-shadow: 0px .3vh 0 #cfcfdf,
+              0px -.2vh 0 #ffffff;
+  animation: is-running .4s linear alternate infinite;
+}
+
+@keyframes is-running {
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+.c-footer ul [data-footer_card="start"] img {
+  width: 4vw;
+  height: 4vw;
+}
+
+.c-footer ul li:nth-child(2).update::after {
+  content: "";
+  position: absolute;
+  width: 1vw;
+  bottom: 15%;
+  height: 1vw;
+  background: var(--text-color);
+  border-radius: 50%;
+  z-index: 40;
+}
