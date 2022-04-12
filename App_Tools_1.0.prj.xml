@@ -1,13 +1,13 @@
-<TaskerData sr="" dvi="1" tv="6.0.2-beta">
+<TaskerData sr="" dvi="1" tv="6.0.4-beta">
 	<dmetric>1080.0,1920.0</dmetric>
-	<Profile sr="prof989" ve="2">
-		<cdate>1649285194560</cdate>
+	<Profile sr="prof939" ve="2">
+		<cdate>1649588421854</cdate>
 		<clp>true</clp>
 		<edate>1648302102472</edate>
 		<flags>8</flags>
-		<id>989</id>
+		<id>939</id>
 		<limit>true</limit>
-		<mid0>942</mid0>
+		<mid0>924</mid0>
 		<nme>APPT 0 - AUTO EXECUTION</nme>
 		<Time sr="con0">
 			<fromvar>%hour_execution</fromvar>
@@ -17,11 +17,11 @@
 	<Project sr="proj0" ve="2">
 		<cdate>1642268778347</cdate>
 		<name>App Tools 1.0</name>
-		<pids>989</pids>
+		<pids>939</pids>
 		<psort>Alpha</psort>
-		<scenes>APPT 1 - CREATE FILES,APPT 0 - APP TOOLS</scenes>
+		<scenes>APPT 0 - APP TOOLS,APPT 1 - CREATE FILES</scenes>
 		<ssort>Alpha</ssort>
-		<tids>983,987,939,981,988,985,942,986,936,937,984,938,982</tids>
+		<tids>932,936,920,933,923,927,922,937,938,934,924,935,803</tids>
 		<tsort>Alpha</tsort>
 		<Kid sr="Kid">
 			<launchID>722</launchID>
@@ -109,7 +109,7 @@
 		<WebElement sr="elements0" ve="2">
 			<flags>6</flags>
 			<geom>0,0,1080,1920,-1,-1,-1,-1</geom>
-			<pageloadedTask>937</pageloadedTask>
+			<pageloadedTask>920</pageloadedTask>
 			<Str sr="arg0" ve="3">App Tools</Str>
 			<Int sr="arg1" val="2"/>
 			<Str sr="arg2" ve="3">&lt;!DOCTYPE html&gt;
@@ -446,7 +446,7 @@
 			</LinkClickFilter>
 		</WebElement>
 		<PropertiesElement sr="props">
-			<keyTask>939</keyTask>
+			<keyTask>923</keyTask>
 			<Int sr="arg0" val="1"/>
 			<Int sr="arg1" val="2"/>
 			<Str sr="arg2" ve="3">#00FFFFFF</Str>
@@ -471,7 +471,7 @@
 		<WebElement sr="elements0" ve="2">
 			<flags>6</flags>
 			<geom>0,0,1080,1920,-1,-1,-1,-1</geom>
-			<linkclickTask>985</linkclickTask>
+			<linkclickTask>935</linkclickTask>
 			<Str sr="arg0" ve="3">Loading</Str>
 			<Int sr="arg1" val="2"/>
 			<Str sr="arg2" ve="3">&lt;!DOCTYPE html&gt;
@@ -693,7 +693,8 @@ const matrix = {
     this.setBgImage(p, font)
     p.style.fontSize = font / 10 +"vw"
     console.log(this.numbers)
-    p.innerText = this.numbers[0].split("").join("\n")
+    p.innerText = this.numbers[0].split("").join("
+")
     p.style.left = this.nRandom(0, this.screenWidth)+"px"
     p = this.setAnimationDetails(p)
     return p
@@ -720,7 +721,7 @@ matrix.start()
 			</LinkClickFilter>
 		</WebElement>
 		<PropertiesElement sr="props">
-			<keyTask>983</keyTask>
+			<keyTask>933</keyTask>
 			<Int sr="arg0" val="1"/>
 			<Int sr="arg1" val="2"/>
 			<Str sr="arg2" ve="3">#00FFFFFF</Str>
@@ -735,10 +736,10 @@ matrix.start()
 			</LinkClickFilter>
 		</PropertiesElement>
 	</Scene>
-	<Task sr="task936">
+	<Task sr="task803">
 		<cdate>1647538235691</cdate>
 		<edate>1649353201489</edate>
-		<id>936</id>
+		<id>803</id>
 		<nme>APPT 8 - RESET</nme>
 		<pri>100</pri>
 		<Action sr="act0" ve="7">
@@ -817,10 +818,10 @@ matrix.start()
 			<Int sr="arg9" val="1"/>
 		</Action>
 	</Task>
-	<Task sr="task937">
+	<Task sr="task920">
 		<cdate>1642629104522</cdate>
 		<edate>1642629104522</edate>
-		<id>937</id>
+		<id>920</id>
 		<pri>102</pri>
 		<Action sr="act0" ve="7">
 			<code>547</code>
@@ -840,10 +841,10 @@ matrix.start()
 			<Str sr="arg3" ve="3">javascript:(function(){%script})()</Str>
 		</Action>
 	</Task>
-	<Task sr="task938">
+	<Task sr="task922">
 		<cdate>1644030145596</cdate>
-		<edate>1649071787555</edate>
-		<id>938</id>
+		<edate>1649594222282</edate>
+		<id>922</id>
 		<nme>APPT 3 - CREATE ICONS</nme>
 		<pri>100</pri>
 		<Action sr="act0" ve="7">
@@ -1088,16 +1089,24 @@ QmCC</Str>
 		<Action sr="act20" ve="7">
 			<code>547</code>
 			<Str sr="arg0" ve="3">%icon_edit</Str>
-			<Str sr="arg1" ve="3">iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAAAXNSR0IArs4c6QAAAARzQklUCAgI
-CHwIZIgAAAHbSURBVHic7dntTcNAEEXRN4YC0gIVkBZoAJQOQgd0BB1EehXQAaECWggFECOzQkIQ
-w354jWd27h8Einadk3HsEMDzPM/zPE9nAivt+hXOcIk3PGMjh9LlOliI/RYdXtDj8ePn8Dtanxj2
-W/S4//F3wS2u5aFNGI6gTIAjZlEKccQ0SgGOmEfJxLFxVYppwEy4WumbmJKpSZgcnTBlOAcccfHX
-TWCnAoAnToHhVR9e/fRWANa6J4ZfpmLsFEifnFfcyIADnRPDb0947M0zdXIEd3EPW2L8ZQpKJifh
-kr08GBY8wRzQ0S2WFBPeL1JwVN/5MuPyG4Oj+rMSK9ywfb5Rq/10zQKUif73cnpJ7SiVcMQESgWc
-zgzKxIkZFNF8KlEHSlhyrqgHJSw7R9SFEpauHfWhhOVrRp0oYYtaUS9K2KZG1I0Stpo66kcJ200Z
-baCELaeKdlDCtlNEWyhh69JoDyVsXxJtooRDyI12UcJh5ETbKHkwtI+SDsM2UNJg2A5KPAzbQomD
-2fVrdHhqCSX2W4JVayj/8/WJLB9lfhjRgTIvjOhBmQ9GdKHMAyP6UOrDiE6UujCiF6UejOhGqQMj
-+lGGziMes8cRV5HrHbCRfeExeZ7neZ7necjvHeUqCoeH9uVFAAAAAElFTkSuQmCC</Str>
+			<Str sr="arg1" ve="3">iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARzQklUCAgI
+CHwIZIgAAAOASURBVGiB7ZndaxxlFMZ/z2TLtvZCdKWWQLLppkKht/4D4k2pYAtCwAsFpaUpLa00
+bWK1VbR+XInihSiId37gN1KsN0Xwuv+AbDq7yWJIoRtoae023cwpb5iFEJLZnclsJ4F5bpadmbOT
+h/Oc55z3BHLkyJFjK0FsIvi+jXkeR4OAmUKBd4aHNbeliFSrVhwY4JTEh8A2d82Mq2a8NDqqW738
+hscmIFEocNzzmOyQcJB4XuKXWs32bQkiYSbeNuOp1fckngM+7YVMptLyfTsi8cXKTKyBwIy/u8ks
+04xs3853wGVgMeIxryOz2VkbXPchMkCtZrvd5+Cg/i8UOAJ8C7SiYhyZdpv3Nw2Ret3eAr6ambGK
++z40pAXAXfvVySgqVmI4cyLXrtm2Ws2mzPgAeDEI+MT37Wl3b88ezReLHAWuRpC5J/FZpkQaDdtR
+KnESOLfCYA5LfD49bUMdmRWLHAZ+WENmfhAwNjKiPzMl8uABJ4DzQGnVrbGBAb68ft2e6ZABJoDv
+VxiAL3G2UuFKpvbr+3bB9QlnUus8YsCVpSXG9+5Vw11oNOzJdpuvgQMuE46EpKVMiMzN2WOLixw3
+4z1gZw8hP5pxqlLRjU58q8WzlYr+6eV9fSFiZl69zmngTWBXjNDfPY+Jcll+3Hf2hUitZufDwn4i
+9h8kfr57l9f279edOHEF0s/EFPBRkniJNvBNXBLLsaQEp+n79zkGXEySCdcrJU5EWWwUUrNfV9hh
+TSSR07TEmXKZv5K+30vLYkN3ilPYHdwOAiZu3uSypMgRpW/Sch3bNTuJSxF9IgpNiVeTyimVjLjZ
+qd1mXFo+2SUhUTXj9TRIbMi1SiXOhBa7euzoBbMSU81m9NjRd2m5UTycYhPFSxx0hS3JjSc88ozM
+z9vOVotjZstyUsJMjI+MKLVMJKqRVotxs+WG9zjxUZV4YyMWmwqR0GLfTWixTTPOhhabmpxWQkmW
+ZzFxW+LltNwpUUbWW57F6dhmvNJvEl2LPczE5FrLsx5QByYXFtKz2ETSqtftBTN+S5gJN8UeCi02
+8diRirTM+DhhTfzntiROTo+KRLcaSeIuVeBkP/rERmokbsNzZ+1zzSZ9L+x+nhDd8iy1ATCr80jX
+5dlWIOL3sjzb7ETuBQGny2X+6LY8y7RGJP41Y2mNonduJomfRkfl/reRI0eOHDmIi4eYZEYLEi2m
+1QAAAABJRU5ErkJggg==</Str>
 			<Int sr="arg2" val="0"/>
 			<Int sr="arg3" val="0"/>
 			<Int sr="arg4" val="0"/>
@@ -1855,10 +1864,10 @@ iPzVv+2nevXP0aLKidpjCIuIiIiIiIiIiIBPir+6ljOWbySWygAAAABJRU5ErkJggg==
 			<Str sr="arg1" ve="3">%path_tools/details_historic.png</Str>
 		</Action>
 	</Task>
-	<Task sr="task939">
+	<Task sr="task923">
 		<cdate>1642268997700</cdate>
 		<edate>1642268997700</edate>
-		<id>939</id>
+		<id>923</id>
 		<pri>102</pri>
 		<Action sr="act0" ve="7">
 			<code>888</code>
@@ -1905,10 +1914,10 @@ iPzVv+2nevXP0aLKidpjCIuIiIiIiIiIiIBPir+6ljOWbySWygAAAABJRU5ErkJggg==
 			<code>38</code>
 		</Action>
 	</Task>
-	<Task sr="task942">
+	<Task sr="task924">
 		<cdate>1643912861335</cdate>
 		<edate>1649070367539</edate>
-		<id>942</id>
+		<id>924</id>
 		<nme>APPT 7 - RUN AUTO KILL / CLEAN</nme>
 		<pri>6</pri>
 		<Action sr="act0" ve="7">
@@ -2333,10 +2342,10 @@ flash(total)</Str>
 			<Int sr="arg3" val="0"/>
 		</Action>
 	</Task>
-	<Task sr="task981">
+	<Task sr="task927">
 		<cdate>1642797532067</cdate>
 		<edate>1649340063031</edate>
-		<id>981</id>
+		<id>927</id>
 		<nme>APPT 1 - STATUS SCENE</nme>
 		<pri>100</pri>
 		<Action sr="act0" ve="7">
@@ -2366,10 +2375,10 @@ flash(total)</Str>
 			<Str sr="arg4" ve="3"/>
 		</Action>
 	</Task>
-	<Task sr="task982">
+	<Task sr="task932">
 		<cdate>1642458940863</cdate>
 		<edate>1649368387895</edate>
-		<id>982</id>
+		<id>932</id>
 		<nme>APPT 6 - ACTIONS</nme>
 		<pri>100</pri>
 		<Action sr="act0" ve="7">
@@ -2622,10 +2631,10 @@ Icon for the app&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES2&gt;
 			</ConditionList>
 		</Action>
 	</Task>
-	<Task sr="task983">
+	<Task sr="task933">
 		<cdate>1644189135114</cdate>
 		<edate>1644189135114</edate>
-		<id>983</id>
+		<id>933</id>
 		<pri>103</pri>
 		<Action sr="act0" ve="7">
 			<code>49</code>
@@ -2648,10 +2657,10 @@ Icon for the app&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES2&gt;
 			<Int sr="arg9" val="0"/>
 		</Action>
 	</Task>
-	<Task sr="task984">
+	<Task sr="task934">
 		<cdate>1644069274448</cdate>
-		<edate>1649512311979</edate>
-		<id>984</id>
+		<edate>1649594063759</edate>
+		<id>934</id>
 		<nme>APPT 4 - CREATE CODES</nme>
 		<pri>100</pri>
 		<Action sr="act0" ve="7">
@@ -3327,7 +3336,8 @@ li {
       appToolsData.hourCheck.check[value] = el.checked
       
       if(["Seg","Ter","Qua","Qui","Sex","Sab","Dom","kill","clean"].includes(value) || value == "status"){
-        const weeks = this.converterToDayWeek().join("\n")
+        const weeks = this.converterToDayWeek().join("
+")
         
         const taskerData = this.getHandleTaskerData("data", true)
         taskerData.days_week_execution = weeks
@@ -5173,10 +5183,10 @@ appTools.getContexts()</Str>
 			<Int sr="arg3" val="0"/>
 		</Action>
 	</Task>
-	<Task sr="task985">
+	<Task sr="task935">
 		<cdate>1644189741869</cdate>
 		<edate>1644189741869</edate>
-		<id>985</id>
+		<id>935</id>
 		<pri>103</pri>
 		<Action sr="act0" ve="7">
 			<code>37</code>
@@ -5212,10 +5222,10 @@ appTools.getContexts()</Str>
 			<code>38</code>
 		</Action>
 	</Task>
-	<Task sr="task986">
+	<Task sr="task936">
 		<cdate>1642268815093</cdate>
 		<edate>1649540136452</edate>
-		<id>986</id>
+		<id>936</id>
 		<nme>APPT 0 - BEGIN / INICIO</nme>
 		<pri>100</pri>
 		<Action sr="act0" ve="7">
@@ -5296,10 +5306,10 @@ appTools.getContexts()</Str>
 			<nme>mw_action_android</nme>
 		</Img>
 	</Task>
-	<Task sr="task987">
+	<Task sr="task937">
 		<cdate>1642269259249</cdate>
 		<edate>1648229537466</edate>
-		<id>987</id>
+		<id>937</id>
 		<nme>APPT 5 - LIST APPS</nme>
 		<pri>100</pri>
 		<Action sr="act0" ve="7">
@@ -5491,7 +5501,8 @@ Icon for the app&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES2&gt;
 		<Action sr="act24" ve="7">
 			<code>598</code>
 			<Str sr="arg0" ve="3">%apps_uninstall</Str>
-			<Str sr="arg1" ve="3">\n</Str>
+			<Str sr="arg1" ve="3">
+</Str>
 			<Int sr="arg2" val="0"/>
 			<Int sr="arg3" val="0"/>
 			<Int sr="arg4" val="0"/>
@@ -5635,10 +5646,10 @@ Icon for the app&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES2&gt;
 			<Str sr="arg7" ve="3">$1</Str>
 		</Action>
 	</Task>
-	<Task sr="task988">
+	<Task sr="task938">
 		<cdate>1644069055070</cdate>
 		<edate>1648396997333</edate>
-		<id>988</id>
+		<id>938</id>
 		<nme>APPT 2 - CHECK FILES</nme>
 		<pri>100</pri>
 		<Action sr="act0" ve="7">

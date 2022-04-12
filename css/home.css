@@ -6,11 +6,11 @@
 }
 
 .c-page__kill_clean li {
-  width: 7.3vw;
-  height: 7.3vw;
+  width: 6.5vw;
+  height: 6.5vw;
   border-radius: 50vw;
-  background: var(--secondary-color);
-  box-shadow: 0px 1px 0px 1.5px rgba(0,255,255, .8);
+  background: rgba(58,58,68, .6);
+  box-shadow: 0px 0px 0px 2px var(--details_cyan-color);
 }
 
 .c-page__kill_clean li img {
@@ -92,7 +92,7 @@
   pointer-events: none;
   width: 6vw;
   height: 6vw;
-  border: .6vw solid #4A81FD;
+  border: .6vw solid #efefff;
   border-radius: .8vw;
 }
 
@@ -107,7 +107,7 @@
 
 .c-auto_execution__hour h3 {
   pointer-events: none;
-  color: #4A81FD;
+  color: #dfdfef;
   font-weight: 500;
   font-size: 1rem;
   margin-left: 3vw;
@@ -115,7 +115,7 @@
 
 .c-auto_execution__hour span {
   display: block;
-  color: var(--text-color);
+  color: var(--details_cyan-color);
   font-size: 1.3rem;
 }
 

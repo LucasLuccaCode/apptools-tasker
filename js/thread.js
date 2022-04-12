@@ -49,7 +49,7 @@ const threadActions = {
           , 200 )
         }
       )
-      if(!this.isRunningThread && this.thread.length)this.playThread(page)
+      if(!this.isRunningThread && this.thread.length) this.playThread(page)
     }
     this.playThread = function(page){
       this.isRunningThread = true

@@ -9,7 +9,7 @@
   width: 65vw;
   height: 7vh;
   border-radius: 50vw;
-  background: var(--details-color);
+  background: rgba(73,83,207, .8);
   box-shadow: 0 .3vh .3vh .3vh rgba(0,0,0, .12);
   z-index: 220;
 }
