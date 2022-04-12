@@ -1,7 +1,7 @@
 :root {
   --primary-color: #2a2a35;
   --secondary-color: #3a3a45;
-  --details-color: #4952CF;
+  --details-color: rgba(0,255,255, .7);
   --text-color: #efefff;
   --margin-default: 3vw;
   --border_radius: 1vw;
@@ -19,7 +19,6 @@ body, html {
   flex-direction: column;
   width: 100vw;
   height: 100%;
-  background-image: linear-gradient(to top, #2e2e39, #31313c, #33333e);
   /background: var(--primary-color);
   font-size: 4vw;
   /-webkit-user-select: none;
@@ -48,6 +47,45 @@ li {
   white-space: nowrap;
 }
 
+
+.c-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: linear-gradient(to top, #2e2e39, #31313c, #33333e);
+  z-index: 0;;
+}
+
+.c-container::after,
+.c-container::before {
+  content: "";
+  position: absolute;
+  width: 70vw;
+  height: 70vw;
+  border-radius: 50%;
+}
+
+.c-container::after {
+  top: 0;
+  left: -20vw;
+  background: linear-gradient(#2193f6, #31ff38);
+}
+
+.c-container::before {
+  bottom: 0;
+  right: -20vw;
+  background: linear-gradient(#2193f6, #31ff38);
+}
+
+.c-container__blur {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  backdrop-filter: blur(100px);
+}
 
             /* ========= FORMATACOES  ========= */
 
