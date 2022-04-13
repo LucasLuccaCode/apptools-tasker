@@ -12,6 +12,7 @@ const selectorsAndEvents = {
     this.c_main = document.querySelector("[data-main_pages]");
     this.c_blur = document.querySelector("[data-blur]");
     this.pages = document.querySelectorAll("[data-page]")
+    this.pagesContent = document.querySelectorAll("[data-page_content]")
     this.pageHome = document.querySelector("[data-page='home']")
     this.homeRecents = document.querySelector("[data-home_recents]")
     this.homeContent = document.querySelector("[data-page_content='home']")
@@ -52,5 +53,10 @@ const selectorsAndEvents = {
     this.pageUninstall.addEventListener("change", this.toggleCheckbox)
     this.pageUninstallDetails.addEventListener("click", this.detailsActions)
     this.c_footer.addEventListener("click", this.footerActions)
+    this.c_main.addEventListener("touchstart", this.touchStart)
+    this.c_main.addEventListener("touchmove", this.debounce(this.touchMoveEnd, 40) )
   }
 }
+
+
+

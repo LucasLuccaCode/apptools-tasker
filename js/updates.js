@@ -54,8 +54,15 @@ const updates = {
       const elemHourEdit = 
         document.querySelector(`[data-hour_edit]`);
       const isActiveExecution = appToolsData.hourCheck.check.status; 
-      elemHourDetails.textContent = isActiveExecution ? appToolsData.hourCheck.hour : "Off"
+
       if(elemHourEdit) elemHourEdit.textContent = appToolsData.hourCheck.hour
+      if(isActiveExecution){
+        elemHourDetails.textContent = appToolsData.hourCheck.hour
+        elemHourDetails.classList.remove("exceptions")
+        return
+      }
+      elemHourDetails.textContent = "Off"
+      elemHourDetails.classList.add("exceptions")
     }
     this.updateHistoricNumber = function(){
       document.querySelector(`[data-home_historic]`)

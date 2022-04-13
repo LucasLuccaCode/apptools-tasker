@@ -19,9 +19,9 @@
 		<name>App Tools 1.0</name>
 		<pids>1306</pids>
 		<psort>Alpha</psort>
-		<scenes>APPT 1 - CREATE FILES,APPT 0 - APP TOOLS</scenes>
+		<scenes>APPT 0 - APP TOOLS,APPT 1 - CREATE FILES</scenes>
 		<ssort>Alpha</ssort>
-		<tids>1302,1299,1301,1297,1294,1303,1296,1305,1298,1293,1295,1300,1304</tids>
+		<tids>1294,1305,1300,1302,1299,1301,1304,1303,1297,1296,1298,1293,1295</tids>
 		<tsort>Alpha</tsort>
 		<Kid sr="Kid">
 			<launchID>722</launchID>
@@ -100,7 +100,7 @@
 	</Project>
 	<Scene sr="sceneAPPT 0 - APP TOOLS">
 		<cdate>1642268892786</cdate>
-		<edate>1649775384604</edate>
+		<edate>1649885749659</edate>
 		<heightLand>1080</heightLand>
 		<heightPort>1920</heightPort>
 		<nme>APPT 0 - APP TOOLS</nme>
@@ -230,7 +230,7 @@
                 &lt;img src="%path/src/tools/details_time.png" alt="hora" /&gt;
                 &lt;h2&gt;EXECUÇÃO AUTOMÁTICA&lt;/h2&gt;
               &lt;/div&gt;
-              &lt;span data-home_hour&gt;...&lt;/span&gt;
+              &lt;span data-home_hour class="exceptions"&gt;...&lt;/span&gt;
             &lt;/li&gt;
           &lt;/ul&gt;
         &lt;/section&gt;
@@ -263,7 +263,7 @@
                 &lt;img src="%path/src/tools/details_exceptions.png" alt="exceptions" /&gt;
                 &lt;h2&gt;EXCEÇÕES&lt;/h2&gt;
               &lt;/div&gt;
-              &lt;span data-kill_exceptions&gt;...&lt;/span&gt;
+              &lt;span data-kill_exceptions class="exceptions"&gt;...&lt;/span&gt;
             &lt;/li&gt;
           &lt;/ul&gt;
         &lt;/section&gt;
@@ -294,7 +294,7 @@
                 &lt;img src="%path/src/tools/details_exceptions.png" alt="exceptions" /&gt;
                 &lt;h2&gt;EXCEÇÕES&lt;/h2&gt;
               &lt;/div&gt;
-              &lt;span data-clean_exceptions&gt;...&lt;/span&gt;
+              &lt;span data-clean_exceptions class="exceptions"&gt;...&lt;/span&gt;
             &lt;/li&gt;
           &lt;/ul&gt;
         &lt;/section&gt;
@@ -325,7 +325,7 @@
                 &lt;img src="%path/src/tools/details_exceptions.png" alt="exceptions" /&gt;
                 &lt;h2&gt;EXCEÇÕES&lt;/h2&gt;
               &lt;/div&gt;
-              &lt;span data-uninstall_exceptions&gt;...&lt;/span&gt;
+              &lt;span data-uninstall_exceptions class="exceptions"&gt;...&lt;/span&gt;
             &lt;/li&gt;
           &lt;/ul&gt;
         &lt;/section&gt;

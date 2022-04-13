@@ -211,6 +211,10 @@
   font-weight: bold;
 }
 
+.c-page__details span.exceptions {
+  color: var(--details_exceptions-color);
+}
+
 /* RECENTS */
 
 .c-home__recents {
@@ -452,7 +456,7 @@
   width: 5.5vw;
   height: 5.5vw;
   border-radius: 50vw;
-  border: 0.4vw solid #FC60aF;
+  border: 0.4vw solid var(--details_exceptions-color);
 }
 
 .checkbox:checked {
@@ -465,7 +469,7 @@
   width: 60%;
   height: 15%;
   border-radius: 50vw;
-  background: #FC608F;
+  background: var(--details_exceptions-color);
 }
 
 .checkbox:checked::before {

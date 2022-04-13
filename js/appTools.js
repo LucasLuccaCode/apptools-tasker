@@ -1,6 +1,8 @@
 
 const appTools = {
   path: tasker.path,
+  ts_x: 0,
+  ts_y: 0,
   numberRecents: 10,
   getContexts(){
     updates.functions.call(this)

@@ -100,6 +100,7 @@ const callbacks = {
       }
       this.lastShortcut = shortcut || false
       this.currentPage = value
+      this.c_footer.classList.remove("active")
     }
     this.callbackObserver = (entries, observer) => { 
       entries.forEach( 
@@ -294,7 +295,6 @@ const callbacks = {
       
       if(["Seg","Ter","Qua","Qui","Sex","Sab","Dom","kill","clean"].includes(value) || value == "status"){
         const weeks = this.converterToDayWeek().join("\n")
-        
         const taskerData = this.getHandleTaskerData("data", true)
         taskerData.days_week_execution = weeks
         taskerData.exceptions =  `${appToolsData.exceptions.kill}-MR-${appToolsData.exceptions.clean}`
@@ -347,5 +347,24 @@ const callbacks = {
         this.updateExceptionsNumber(this.currentPage)
       }, 200)
     }
+    this.touchStart = (e) => {
+      this.ts_x = e.touches[0].clientX;
+      this.ts_y = e.touches[0].clientY;
+    }
+    this.touchMoveEnd = (e) => {
+      const className = e.target.className
+      const td_x = e.changedTouches[0].clientX - this.ts_x;
+      const td_y = e.changedTouches[0].clientY - this.ts_y;
+    
+      const verticalMovement = Math.abs(td_x) < Math.abs(td_y)
+      if (verticalMovement) {
+        if (td_y < 0) {
+          this.c_footer.classList.add("active")
+        } else {
+          this.c_footer.classList.remove("active")
+        }
+      }
+    }
+
   }
 }
