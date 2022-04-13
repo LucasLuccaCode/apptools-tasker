@@ -358,7 +358,6 @@
   width: 4vw;
   height: 4vw;
   border-radius: 50%;
-  z-index: 1001;
   background: var(--secondary-color);
 }
 
@@ -369,8 +368,7 @@
   height: 1.5vw;
   left: calc( var(--margin-default) - .3vw);
   border-radius: 50%;
-  z-index: 1002;
-}
+ }
 
 .c-historic__card:last-child:: {
   /border: none;
