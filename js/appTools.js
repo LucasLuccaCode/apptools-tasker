@@ -4,6 +4,7 @@ const appTools = {
   ts_x: 0,
   ts_y: 0,
   numberRecents: 10,
+  maxHistoric: 200,
   getContexts(){
     updates.functions.call(this)
     createHtmlTags.functions.call(this)

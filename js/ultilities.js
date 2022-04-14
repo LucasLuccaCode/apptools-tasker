@@ -120,7 +120,6 @@ const ultilities = {
     this.saveAppsData = function(){
       localStorage.setItem("appToolsData", 
         JSON.stringify(appToolsData))
-        //console.log("Dados salvos no storage")
     }
     this.removeStorageData = function(){
       localStorage.removeItem("appToolsData")

@@ -65,6 +65,10 @@ const updates = {
       elemHourDetails.classList.add("exceptions")
     }
     this.updateHistoricNumber = function(){
+      if(appToolsData.historic.length > 200){
+        appToolsData.historic = appToolsData.historic.slice(0, this.maxHistoric)
+        this.saveAppsData()
+      }
       document.querySelector(`[data-home_historic]`)
       .textContent = appToolsData.historic.length;
     }
