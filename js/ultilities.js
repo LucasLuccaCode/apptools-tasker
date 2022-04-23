@@ -1,6 +1,5 @@
 const ultilities = {
   functions(){
-    this.order_msg = 0
     this.sleep = function(ms) {
       return new Promise( resolve => setTimeout( resolve, ms ))
     }
@@ -58,17 +57,16 @@ const ultilities = {
       this.createMsg(text, true, true, true)
     }
     this.createMsg = async (text, status, isLongTime, isPermanent) => {
-      --this.order_msg
       const msg = this.getBodyMsg(text, status, isPermanent)
       const c_progress = msg.querySelector("div")
       this.c_msg.appendChild(msg)
-      msg.classList.add("active")
       if(isPermanent) return
-      
       let n = isLongTime ? 12 : 8
+      
       await this.sleep(30)
+      
       const interval = setInterval( ()=> {
-        c_progress.innerText = --n
+        c_progress.textContent = --n
         if(n == 0) {
           msg.remove()
           clearInterval(interval)
@@ -76,7 +74,6 @@ const ultilities = {
       },1000)
       
       msg.setAttribute("data-msg_card", interval)
-      
     }
     this.debounce = (func, wait, immediate) => {
       let timeout;
