@@ -27,4 +27,3 @@ const appTools = {
     this.checkNewApps()
   }
 }
-appTools.getContexts()

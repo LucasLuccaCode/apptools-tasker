@@ -6,7 +6,6 @@
 		<edate>1648302102472</edate>
 		<flags>8</flags>
 		<id>1055</id>
-		<limit>true</limit>
 		<mid0>1053</mid0>
 		<nme>APPT 0 - AUTO EXECUTION</nme>
 		<Time sr="con0">
@@ -21,7 +20,7 @@
 		<psort>Alpha</psort>
 		<scenes>APPT 0 - APP TOOLS,APPT 1 - CREATE FILES</scenes>
 		<ssort>Alpha</ssort>
-		<tids>1053,1052,1049,1047,1054,1045,1051,1046,995,1048,993,1050,994</tids>
+		<tids>1046,1048,994,995,1045,1053,1051,1050,1054,1047,1049,1052,993</tids>
 		<tsort>Alpha</tsort>
 		<Kid sr="Kid">
 			<launchID>722</launchID>
@@ -100,7 +99,7 @@
 	</Project>
 	<Scene sr="sceneAPPT 0 - APP TOOLS">
 		<cdate>1642268892786</cdate>
-		<edate>1650673119638</edate>
+		<edate>1650826711287</edate>
 		<heightLand>1080</heightLand>
 		<heightPort>1920</heightPort>
 		<nme>APPT 0 - APP TOOLS</nme>
@@ -738,7 +737,7 @@ matrix.start()
 	</Scene>
 	<Task sr="task1045">
 		<cdate>1644069274448</cdate>
-		<edate>1649594063759</edate>
+		<edate>1650826965237</edate>
 		<id>1045</id>
 		<nme>APPT 4 - CREATE CODES</nme>
 		<pri>100</pri>
@@ -757,6 +756,8 @@ matrix.start()
   --primary-color: #2a2a35;
   --secondary-color: #3a3a45;
   --details-color: #4952CF;
+  --details_cyan-color: cyan;
+  --details_exceptions-color: #Fd60aF;
   --text-color: #efefff;
   --margin-default: 3vw;
   --border_radius: 1vw;
@@ -896,15 +897,15 @@ li {
 /* MSG */
 
 .c-msg {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  bottom: 10vh;
+  pointer-events: auto;
   width: 100%;
+  max-height: 38vh;
   padding: 0 var(--margin-default);
   background: inherit;
-  overflow-y: auto;
+  margin-bottom: 1.5vh;
+  flex: 1;
   z-index: 202;
+  overflow: auto;
 }
 
 .c-msg li {
@@ -913,7 +914,11 @@ li {
   width: 100%;
   border-radius: 1.7vw;
   padding: 2vw;
-  margin: .5vh 0 1vh 0;
+  margin-bottom: 1.2vh;
+}
+
+.c-msg li:last-child {
+  margin-bottom: 0;
 }
 
 
@@ -1071,6 +1076,7 @@ li {
     this.c_main = document.querySelector("[data-main_pages]");
     this.c_blur = document.querySelector("[data-blur]");
     this.pages = document.querySelectorAll("[data-page]")
+    this.pagesContent = document.querySelectorAll("[data-page_content]")
     this.pageHome = document.querySelector("[data-page='home']")
     this.homeRecents = document.querySelector("[data-home_recents]")
     this.homeContent = document.querySelector("[data-page_content='home']")
@@ -1111,6 +1117,8 @@ li {
     this.pageUninstall.addEventListener("change", this.toggleCheckbox)
     this.pageUninstallDetails.addEventListener("click", this.detailsActions)
     this.c_footer.addEventListener("click", this.footerActions)
+    this.c_main.addEventListener("touchstart", this.touchStart)
+    this.c_main.addEventListener("touchmove", this.debounce(this.touchMoveEnd, 40) )
   }
 }</Str>
 			<Int sr="arg2" val="0"/>
@@ -1222,6 +1230,7 @@ li {
       }
       this.lastShortcut = shortcut || false
       this.currentPage = value
+      this.c_footer.classList.remove("active")
     }
     this.callbackObserver = (entries, observer) =&gt; { 
       entries.forEach( 
@@ -1417,7 +1426,6 @@ li {
       if(["Seg","Ter","Qua","Qui","Sex","Sab","Dom","kill","clean"].includes(value) || value == "status"){
         const weeks = this.converterToDayWeek().join("
 ")
-        
         const taskerData = this.getHandleTaskerData("data", true)
         taskerData.days_week_execution = weeks
         taskerData.exceptions =  `${appToolsData.exceptions.kill}-MR-${appToolsData.exceptions.clean}`
@@ -1470,6 +1478,25 @@ li {
         this.updateExceptionsNumber(this.currentPage)
       }, 200)
     }
+    this.touchStart = (e) =&gt; {
+      this.ts_x = e.touches[0].clientX;
+      this.ts_y = e.touches[0].clientY;
+    }
+    this.touchMoveEnd = (e) =&gt; {
+      const className = e.target.className
+      const td_x = e.changedTouches[0].clientX - this.ts_x;
+      const td_y = e.changedTouches[0].clientY - this.ts_y;
+    
+      const verticalMovement = Math.abs(td_x) &lt; Math.abs(td_y)
+      if (verticalMovement) {
+        if (td_y &lt; 0) {
+          this.c_footer.classList.add("active")
+        } else {
+          this.c_footer.classList.remove("active")
+        }
+      }
+    }
+
   }
 }</Str>
 			<Int sr="arg2" val="0"/>
@@ -1481,7 +1508,6 @@ li {
 			<Str sr="arg0" ve="3">%path/js/ultilities.js</Str>
 			<Str sr="arg1" ve="3">const ultilities = {
   functions(){
-    this.order_msg = 0
     this.sleep = function(ms) {
       return new Promise( resolve =&gt; setTimeout( resolve, ms ))
     }
@@ -1539,17 +1565,16 @@ li {
       this.createMsg(text, true, true, true)
     }
     this.createMsg = async (text, status, isLongTime, isPermanent) =&gt; {
-      --this.order_msg
       const msg = this.getBodyMsg(text, status, isPermanent)
       const c_progress = msg.querySelector("div")
       this.c_msg.appendChild(msg)
-      msg.classList.add("active")
       if(isPermanent) return
-      
       let n = isLongTime ? 12 : 8
+      
       await this.sleep(30)
+      
       const interval = setInterval( ()=&gt; {
-        c_progress.innerText = --n
+        c_progress.textContent = --n
         if(n == 0) {
           msg.remove()
           clearInterval(interval)
@@ -1557,7 +1582,6 @@ li {
       },1000)
       
       msg.setAttribute("data-msg_card", interval)
-      
     }
     this.debounce = (func, wait, immediate) =&gt; {
       let timeout;
@@ -1601,7 +1625,6 @@ li {
     this.saveAppsData = function(){
       localStorage.setItem("appToolsData", 
         JSON.stringify(appToolsData))
-        //console.log("Dados salvos no storage")
     }
     this.removeStorageData = function(){
       localStorage.removeItem("appToolsData")
@@ -1970,7 +1993,10 @@ let appToolsData = {
 			<Str sr="arg1" ve="3">
 const appTools = {
   path: tasker.path,
+  ts_x: 0,
+  ts_y: 0,
   numberRecents: 10,
+  maxHistoric: 200,
   getContexts(){
     updates.functions.call(this)
     createHtmlTags.functions.call(this)
@@ -1992,8 +2018,7 @@ const appTools = {
     this.updateCheckboxSettings()
     this.checkNewApps()
   }
-}
-appTools.getContexts()</Str>
+}</Str>
 			<Int sr="arg2" val="0"/>
 			<Int sr="arg3" val="0"/>
 		</Action>
@@ -2104,10 +2129,11 @@ appTools.getContexts()</Str>
 .c-header__shortcuts li p {
   pointer-events: none;
   font-size: .6rem;
-  font-weight: 350;
+  font-weight: 400;
   color: #727286;
   transition: font-size .1s ease;
   white-space: nowrap;
+  font-family: serif;
 }
 
 .c-header__shortcuts li.active p {
@@ -2202,21 +2228,24 @@ appTools.getContexts()</Str>
 
 .c-page__card_details {
   width: 100%;
+  display: flex;
+  justify-content: center;
   padding: 1vh var(--margin-default);
   padding-top: 2vh;
-  background: #33333D;
-  z-index: 210;
+  background: #33333d;
   overflow: hidden;
+  z-index: 210;
 }
 
 .c-page__details {
   display: flex;
   height: 100%;
-  width: 100%;
+  width: calc(100% - (2px * 2));
   background: #3A3A44;
-  box-shadow: 0px 0px 0px 3px var(--details-color);
- / border: .4vw solid #4A81FD;
+  box-shadow: 0px 0px 0px 4px var(--details-color);
+  /border: .4vw solid #4A81FD;
   border-radius: 2vw;
+  overflow: hidden;
 }
 
 .c-page__details.hide {
@@ -2240,6 +2269,7 @@ appTools.getContexts()</Str>
 }
 
 .c-page__details li.active {
+  /background: #efefff;
   background: var(--details-color);
 }
 
@@ -2311,7 +2341,7 @@ appTools.getContexts()</Str>
   color: #afafbf;
   width: 100%;
   font-size: .5rem;
-  font-weight: 400;
+  font-weight: bold;
 }
 
 .c-page__details li.active div img {
@@ -2324,9 +2354,13 @@ appTools.getContexts()</Str>
 
 .c-page__details span {
   pointer-events: none;
-  color: #4A81FD;
+  color: var(--details_cyan-color);
   font-size: .7rem;
   font-weight: bold;
+}
+
+.c-page__details span.exceptions {
+  color: var(--details_exceptions-color);
 }
 
 /* RECENTS */
@@ -2348,7 +2382,7 @@ appTools.getContexts()</Str>
   max-width: 22vw;
   min-width: 22vw;
   width: 22vw;
-  padding: 1vw;
+  padding: 1vw 1.5vw;
   margin-left: 2vw;
   opacity: 1;
 }
@@ -2380,7 +2414,7 @@ appTools.getContexts()</Str>
 
 .c-home__recents li p {
   pointer-events: none;
-  color: #dfdfef;
+  color: #efefff;
   font-size: .5rem;
   font-weight: 600;
   margin: 0 1.5vw;
@@ -2469,24 +2503,37 @@ appTools.getContexts()</Str>
   border-left: 1vw solid var(--secondary-color);
 }
 
+.c-historic__card::before {
+  content: "";
+  position: absolute;
+  left: calc( var(--margin-default) - 1.5vw);
+  width: 4vw;
+  height: 4vw;
+  border-radius: 50%;
+  background: var(--secondary-color);
+}
+
 .c-historic__card::after {
   content: "";
   position: absolute;
-  left: calc( var(--margin-default) - .65vw);
-  width: 2.5vw;
-  height: 2.5vw;
+  width: 1.5vw;
+  height: 1.5vw;
+  left: calc( var(--margin-default) - .3vw);
   border-radius: 50%;
-  z-index: 1001;
+ }
+
+.c-historic__card:last-child:: {
+  /border: none;
 }
 
 .c-historic__card.sucess::after {
-  background: #4A81FD;
-  /box-shadow: 0px 2px 0px #3942bF;
+  background: rgba(0, 255, 255, .6);
+  box-shadow: 0px 0px 2px 2px rgba(0, 255, 255, .6);
 }
 
 .c-historic__card.error::after {
-  background: #ff6090;
-  /box-shadow: 0px 2px 1px #cf3060;
+  background: rgba(255, 95, 145, .6);
+  box-shadow: 0px 0px 2px 2px rgba(255, 95, 145, .6);
 }
 
 .c-historic__card p {
@@ -2557,11 +2604,11 @@ appTools.getContexts()</Str>
   width: 5.5vw;
   height: 5.5vw;
   border-radius: 50vw;
-  border: 0.4vw solid #FC608F;
+  border: 0.4vw solid var(--details_exceptions-color);
 }
 
 .checkbox:checked {
-  border: 0.4vw solid #4A81FD;
+  border: 0.4vw solid var(--details_cyan-color);
 }
 
 .checkbox::before {
@@ -2570,15 +2617,15 @@ appTools.getContexts()</Str>
   width: 60%;
   height: 15%;
   border-radius: 50vw;
-  background: #FC608F;
+  background: var(--details_exceptions-color);
 }
 
 .checkbox:checked::before {
   width: 1.2vw;
   height: 1.7vw;
   background: none;
-  border-right: 0.6vw solid #4A81FD;
-  border-bottom: 0.6vw solid #4A81FD;
+  border-right: 0.6vw solid var(--details_cyan-color);
+  border-bottom: 0.6vw solid var(--details_cyan-color);
   transform: rotate(45deg);
   margin-bottom: 12%;
   border-radius: 0;
@@ -2602,12 +2649,12 @@ appTools.getContexts()</Str>
 }
 
 .c-page__kill_clean li {
-  width: 7vw;
-  height: 7vw;
+  width: 7.5vw;
+  height: 7.5vw;
   border-radius: 50vw;
-  background: var(--secondary-color);
-  box-shadow: 0px -1px 0px 0px rgba(255,255,255, .2),
-              0px 2px 1px 0px rgba(0,0,0, .12);
+  background: rgba(58,58,68, .6);
+  box-shadow: 0px 1.5px 0px .5px rgba(0,255,255, .7),
+              0px -1px 0px 0px rgba(0,255,255, .1);
 }
 
 .c-page__kill_clean li img {
@@ -2689,7 +2736,7 @@ appTools.getContexts()</Str>
   pointer-events: none;
   width: 6vw;
   height: 6vw;
-  border: .6vw solid #4A81FD;
+  border: .6vw solid #efefff;
   border-radius: .8vw;
 }
 
@@ -2704,7 +2751,7 @@ appTools.getContexts()</Str>
 
 .c-auto_execution__hour h3 {
   pointer-events: none;
-  color: #4A81FD;
+  color: #dfdfef;
   font-weight: 500;
   font-size: 1rem;
   margin-left: 3vw;
@@ -2712,7 +2759,7 @@ appTools.getContexts()</Str>
 
 .c-auto_execution__hour span {
   display: block;
-  color: var(--text-color);
+  color: var(--details_cyan-color);
   font-size: 1.3rem;
 }
 
@@ -2910,47 +2957,55 @@ appTools.getContexts()</Str>
 /* ========= FOOTER  ========= */
 
 .c-footer {
+  pointer-events: none;
   position: fixed;
-  left: 50%;
+  left: 0;
   bottom: 2vh;
-  transform: translateX(-50%);
-  width: 65vw;
-  height: 7vh;
-  border-radius: 50vw;
-  background: var(--details-color);
-  box-shadow: 0 .3vh .3vh .3vh rgba(0,0,0, .12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   z-index: 220;
+  /background: inherit;
+  padding-bottom: .3vh;
+  overflow: hidden;
 }
 
-.c-footer.hide {
-  display: none;
+.c-footer.active {
+  width: 0;
+  box-shadow: none;
 }
 
-.c-footer ul {
+.c-footer__content {
+  pointer-events: auto;
   display: flex;
   align-items: center;
+  width: 60vw;
+  min-height: 7vh;
+  height: 7vh;
   justify-content: space-between;
-  width: 100%;
-  height: 100%;
+  border-radius: 50vw;
+  box-shadow: 0 .3vh .3vh rgba(0,0,0, .12);
+  background: var(--details-color);
 }
 
-.c-footer ul li {
+.c-footer__content li {
   position: relative;
   height: 100%;
   flex: 1;
 }
 
-.c-footer ul li:active {
+.c-footer__content li:active {
   background: #5962dF;
 }
 
-.c-footer ul img {
+.c-footer__content img {
   pointer-events: none;
   width: 6vw;
   height: 6vw;
 }
 
-.c-footer ul li:nth-child(3) {
+.c-footer__content li:nth-child(3) {
   background: #4A81FD;
   border-radius: 50%;
   margin: 0 2vw;
@@ -2962,11 +3017,11 @@ appTools.getContexts()</Str>
   transition: transform .1s linear;
 }
 
-.c-footer ul li:nth-child(3).disabled {
+.c-footer__content li:nth-child(3).disabled {
   opacity: .5;
 }
 
-.c-footer ul li:nth-child(3).running {
+.c-footer__content li:nth-child(3).running {
   background: var(--text-color);
   box-shadow: 0px .3vh 0 #cfcfdf,
               0px -.2vh 0 #ffffff;
@@ -2979,12 +3034,12 @@ appTools.getContexts()</Str>
   }
 }
 
-.c-footer ul [data-footer_card="start"] img {
+.c-footer__content [data-footer_card="start"] img {
   width: 4vw;
   height: 4vw;
 }
 
-.c-footer ul li:nth-child(2).update::after {
+.c-footer__content li:nth-child(2).update::after {
   content: "";
   position: absolute;
   width: 1vw;
@@ -3064,10 +3119,21 @@ appTools.getContexts()</Str>
       const elemHourEdit = 
         document.querySelector(`[data-hour_edit]`);
       const isActiveExecution = appToolsData.hourCheck.check.status; 
-      elemHourDetails.textContent = isActiveExecution ? appToolsData.hourCheck.hour : "Off"
+
       if(elemHourEdit) elemHourEdit.textContent = appToolsData.hourCheck.hour
+      if(isActiveExecution){
+        elemHourDetails.textContent = appToolsData.hourCheck.hour
+        elemHourDetails.classList.remove("exceptions")
+        return
+      }
+      elemHourDetails.textContent = "Off"
+      elemHourDetails.classList.add("exceptions")
     }
     this.updateHistoricNumber = function(){
+      if(appToolsData.historic.length &gt; 200){
+        appToolsData.historic = appToolsData.historic.slice(0, this.maxHistoric)
+        this.saveAppsData()
+      }
       document.querySelector(`[data-home_historic]`)
       .textContent = appToolsData.historic.length;
     }
@@ -3158,7 +3224,7 @@ appTools.getContexts()</Str>
           , 200 )
         }
       )
-      if(!this.isRunningThread &amp;&amp; this.thread.length)this.playThread(page)
+      if(!this.isRunningThread &amp;&amp; this.thread.length) this.playThread(page)
     }
     this.playThread = function(page){
       this.isRunningThread = true
@@ -3303,7 +3369,7 @@ appTools.getContexts()</Str>
 	</Task>
 	<Task sr="task1047">
 		<cdate>1642268815093</cdate>
-		<edate>1649540136452</edate>
+		<edate>1650826481798</edate>
 		<id>1047</id>
 		<nme>APPT 0 - BEGIN / INICIO</nme>
 		<pri>100</pri>
@@ -3810,11 +3876,12 @@ Icon for the app&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES2&gt;
 		<cdate>1642629104522</cdate>
 		<edate>1642629104522</edate>
 		<id>1050</id>
-		<pri>9</pri>
+		<pri>102</pri>
 		<Action sr="act0" ve="7">
 			<code>547</code>
 			<Str sr="arg0" ve="3">%script</Str>
-			<Str sr="arg1" ve="3">appTools.start()</Str>
+			<Str sr="arg1" ve="3">appTools.getContexts();
+appTools.start();</Str>
 			<Int sr="arg2" val="0"/>
 			<Int sr="arg3" val="0"/>
 			<Int sr="arg4" val="0"/>
@@ -4856,7 +4923,7 @@ iPzVv+2nevXP0aLKidpjCIuIiIiIiIiIiIBPir+6ljOWbySWygAAAABJRU5ErkJggg==
 		<cdate>1642268997700</cdate>
 		<edate>1642268997700</edate>
 		<id>1052</id>
-		<pri>9</pri>
+		<pri>102</pri>
 		<Action sr="act0" ve="7">
 			<code>888</code>
 			<Str sr="arg0" ve="3">%exit</Str>
@@ -4904,7 +4971,7 @@ iPzVv+2nevXP0aLKidpjCIuIiIiIiIiIiIBPir+6ljOWbySWygAAAABJRU5ErkJggg==
 	</Task>
 	<Task sr="task1053">
 		<cdate>1643912861335</cdate>
-		<edate>1649070367539</edate>
+		<edate>1650826493354</edate>
 		<id>1053</id>
 		<nme>APPT 7 - RUN AUTO KILL / CLEAN</nme>
 		<pri>6</pri>
@@ -5365,7 +5432,7 @@ flash(total)</Str>
 	</Task>
 	<Task sr="task993">
 		<cdate>1647538235691</cdate>
-		<edate>1649353201489</edate>
+		<edate>1650826507890</edate>
 		<id>993</id>
 		<nme>APPT 8 - RESET</nme>
 		<pri>100</pri>

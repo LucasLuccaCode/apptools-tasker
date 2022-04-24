@@ -57,6 +57,3 @@ const selectorsAndEvents = {
     this.c_main.addEventListener("touchmove", this.debounce(this.touchMoveEnd, 40) )
   }
 }
-
-
-
