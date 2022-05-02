@@ -59,7 +59,7 @@ const ultilities = {
     this.createMsg = async (text, status, isLongTime, isPermanent) => {
       const msg = this.getBodyMsg(text, status, isPermanent)
       const c_progress = msg.querySelector("div")
-      this.c_msg.appendChild(msg)
+      this.c_msg.prepend(msg)
       if(isPermanent) return
       let n = isLongTime ? 12 : 8
       
