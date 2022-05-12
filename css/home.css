@@ -1,6 +1,14 @@
 
 /* KILL CLEAN */
 
+.c-home .c-page__card:active {
+  background: rgba(255,255,255, .06);
+}
+
+.c-home .c-page__card:hover .c-card__content__arrow {
+  transform: rotate(45deg);
+}
+
 .c-page__kill_clean {
   display: flex;
 }

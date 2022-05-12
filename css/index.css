@@ -24,8 +24,8 @@ body, html {
   background-image: linear-gradient(to top, #2e2e39, #31313c, #33333e);
   /background: var(--primary-color);
   font-size: 4vw;
-  /-webkit-user-select: none;
-  /user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 input, button {

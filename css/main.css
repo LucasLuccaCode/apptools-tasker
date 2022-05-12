@@ -289,8 +289,7 @@
   width: 100%;
   flex: 1;
   margin-top: 1vh;
-  padding: 0 var(--margin-default);
-  padding-bottom: 10vh;
+ / padding: 0 var(--margin-default);
   overflow-y: auto;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -413,35 +412,53 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 1.5vh 0;
-  border-bottom: var(--size-lines-spacing) solid rgba(0,0,0, .06);
+  padding: 0 var(--margin-default);
 }
 
-.c-page__cover {
+.c-card__cover {
+  pointer-events: none;
   height: 8.5vw;
   width: 8.5vw;
   border-radius: 50%;
 }
 
-.c-page__content {
+.c-card__content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 1.8vh 0;
+  border-bottom: var(--size-lines-spacing) solid rgba(0,0,0, .06);
+  margin-left: 2vw;
+}
+
+.c-card__content__name {
+  pointer-events: none;
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin: 0 2vw;
   overflow: hidden;
 }
 
-.c-page__content h2 {
+.c-card__content h2 {
   pointer-events: none;
   color: var(--text-color);
   font-size: .7rem;
 }
 
-.c-page__content p {
+.c-card__content p {
   color: #727286;
   font-weight: 400;
   font-size: .6rem;
   margin-top: 1vh;
+}
+
+.c-card__content__arrow {
+  width: 2vw;
+  height: 2vw;
+  background: none;
+  border-right: 0.6vw solid #727286;
+  border-bottom: 0.6vw solid #727286;
+  transform: rotate(-45deg);
 }
 
 /* ======================= CheckBox ======================= */

@@ -14,24 +14,19 @@ const createHtmlTags = {
       <li data-${page}_card="${id}" 
       style="order:${ isExceptionCard ? --this.orderCard : 0 }" 
       class="c-page__card">
-        <img data-cover="${id}" class="c-page__cover" onerror="appTools.coverError(this)" 
+        <img data-cover="${id}" class="c-card__cover" onerror="appTools.coverError(this)" 
         src="${ icon ? icon : `content://net.dinglisch.android.taskerm.iconprovider//app/${pakage}` }" 
         loading="lazy" />
-        <div class="c-page__content">
-          <h2 class="nowrap">${name}</h2>
-          <p class="nowrap">${pakage}</p>
+        <div class="c-card__content">
+          <div class="c-card__content__name">
+            <h2 class="nowrap">${name}</h2>
+            <p class="nowrap">${pakage}</p>
+          </div>
+          
+          ${page == "home" 
+          ? '<div class="c-card__content__arrow"></div>'
+          : `<input data-${page}_check="${id}" class="checkbox" type="checkbox" ${ !isExceptionCard ? "checked" : ""}>` }
         </div>
-        
-        ${page == "home" 
-        ? `<ul class="c-page__kill_clean">
-            <li data-home_kill="${id}" class="kill c--flex">
-              <img src="${this.path}/src/tools/home_kill.png" loading="lazy" />
-            </li>
-            <li data-home_clean="${id}" class="clean c--flex">
-              <img src="${this.path}/src/tools/home_clean.png" loading="lazy" />
-            </li>
-          </ul>`
-        : `<input data-${page}_check="${id}" class="checkbox" type="checkbox" ${ !isExceptionCard ? "checked" : ""}>` }
       </li>
       `}).join("")
     }
